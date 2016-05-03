@@ -4,108 +4,60 @@
 <head>
     <meta charset="utf-8">
     <title>Camera tuner</title>
-
-    <style>
-        .slider {
-            display: inline-block;
-        }
-    </style>
-
-    <script src="/js/jquery.js"></script>
-    <script src="/networktables/networktables.js"></script>
-    <script src="/networktables/camera.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Camera tuner</h2>
-                <hr>
+    <h2>Camera tuner</h2>
+    <hr>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <input id="enabled" type="checkbox"> Processing enabled
-                        <br/>
-                        <input id="logging_enabled" type="checkbox"> Logging enabled
-                        <br/>
-                        <input id="draw_targets" type="checkbox"> Draw Targets
-                        <br/>
-                        <input id="draw_thresh" type="checkbox"> Draw Threshold
-                        <br/>
-                    </div>
-                    <div class="col-md-6">
-                        Present: <span id="present"></span>
-                        <br> Angle: <span id="target_angle"></span>
-                        <br> Height: <span id="target_height"></span>
-                        <br> LogError: <span id="logging_error"></span>
-                    </div>
-                </div>
-
-                <hr/>
-
-                <!-- TODO: create these via javascript -->
-
-                <div class="row">
-                    <div class="col-md-1">
-                        <input id="draw_hue" type="checkbox">
-                    </div>
-                    <div class="col-md-1">HUE_P</div>
-                    <div class="col-md-10">
-                        <input id="hue_p" type="range" min="0" max="255" step="1">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-1">HUE_N</div>
-                    <div class="col-md-10">
-                        <input id="hue_n" type="range" min="0" max="255" step="1">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1">
-                        <input id="draw_sat" type="checkbox">
-                    </div>
-                    <div class="col-md-1">SAT_P</div>
-                    <div class="col-md-10">
-                        <input id="sat_p" type="range" min="0" max="255" step="1">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-1">SAT_N</div>
-                    <div class="col-md-10">
-                        <input id="sat_n" type="range" min="0" max="255" step="1">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1">
-                        <input id="draw_val" type="checkbox">
-                    </div>
-                    <div class="col-md-1">VAL_P</div>
-                    <div class="col-md-10">
-                        <input id="val_p" type="range" min="0" max="255" step="1">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-1">VAL_N</div>
-                    <div class="col-md-10">
-                        <input id="val_n" type="range" min="0" max="255" step="1">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div id="robocam"></div>
-            </div>
-        </div>
+    <div class="row">
+        <input id="enabled" type="checkbox"> Processing enabled
+        <br/>
+        <input id="logging_enabled" type="checkbox"> Logging enabled
+        <br/>
+        <input id="draw_targets" type="checkbox"> Draw Targets
+        <br/>
+        <input id="draw_thresh" type="checkbox"> Draw Threshold
+        <br/>
     </div>
+    <div class="col-md-6">
+        Present: <span id="present"></span>
+        <br> Angle: <span id="target_angle"></span>
+        <br> Height: <span id="target_height"></span>
+        <br> LogError: <span id="logging_error"></span>
+    </div>
+    </div>
+
+    <hr/>
+
+    <!-- TODO: create these via javascript -->
+
+    <input id="draw_hue" type="checkbox">
+    <div>HUE_P</div>
+    <input id="hue_p" type="range" min="0" max="255" step="1">
+
+    <div>HUE_N</div>
+    <input id="hue_n" type="range" min="0" max="255" step="1">
+
+    <input id="draw_sat" type="checkbox">
+    <div>SAT_P</div>
+    <input id="sat_p" type="range" min="0" max="255" step="1">
+
+    <div>SAT_N</div>
+    <input id="sat_n" type="range" min="0" max="255" step="1">
+
+    <input id="draw_val" type="checkbox">
+
+    <div>VAL_P</div>
+    <input id="val_p" type="range" min="0" max="255" step="1">
+
+    <div>VAL_N</div>
+    <input id="val_n" type="range" min="0" max="255" step="1">
+
+    <div id="robocam"></div>
+
+    <script src="/networktables/networktables.js"></script>
+    <script src="/networktables/camera.js"></script>
     <script src="cameraTuning.js"></script>
 </body>
 

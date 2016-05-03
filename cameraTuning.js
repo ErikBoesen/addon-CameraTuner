@@ -4,12 +4,11 @@
 NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
 // slider setup + config
-$('[data-slider]')
+document.querySelectorAll('input[type="range"]')
 	.each(function() {
-		var input = $(this);
 		var span = document.createElement('span');
 	    span.className = 'output';
-		span.insertAfter($(this));
+		span.insertAfter(this);
 	})
 	.bind('slider:ready slider:changed', function(event, data) {
 		$(this)
@@ -27,26 +26,26 @@ $('input:checkbox')
 		$(this).nt_toggle('/camera/' + this.id);
 	});
 
-NetworkTables.addGlobalListener(function(k, v) {
-	switch (k) {
+NetworkTables.addGlobalListener(function(key, value) {
+	switch (key) {
 		case '/components/autoaim/present':
-			$('#present').text(v);
-			$('#target_angle').toggle(v);
-			$('#target_height').toggle(v);
+			$('#present').text(value);
+			$('#target_angle').toggle(value);
+			$('#target_height').toggle(value);
 			break;
 		case '/components/autoaim/target_angle':
-			$('#target_angle').text(v);
+			$('#target_angle').text(value);
 			break;
 		case '/components/autoaim/target_height':
-			$('#target_height').text(v);
+			$('#target_height').text(value);
 			break;
 		case '/camera/logging_error':
-			$('#logging_error').text(v ? 'true' : 'false');
+			$('#logging_error').text(value ? 'true' : 'false');
 			break;
 	}
 
-	if (k.startsWith('/camera/thresholds/')) {
-		$('#' + k.substring(19)).simpleSlider('setValue', v);
+	if (key.startsWith('/camera/thresholds/')) {
+		document.getElementById(key.substring(19)).value = value;
 	}
 
 }, true);
